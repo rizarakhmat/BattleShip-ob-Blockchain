@@ -1,7 +1,7 @@
 # BattleShip game based on Blockchain
-BattleShip game implemented on Etherium Blockchain
+BattleShip game implemented with MerkleTree structure to prevent falsifications with results of ship coordinations.
 
-## aim of the project 
+## Aim of the project 
 The aim of the project is to develop the Battleship game on Ethereum blockchain. The blockchain is exploited: 
 • to guarantee that the initial choice of the ship locations made in the placement phase is not modified 
 by a cheater after the placement phase; 
@@ -13,13 +13,13 @@ in the smart contract balance;
 • to define a penalty mechanism for cheating players and for players taking no action at a particular 
 turn, so freezing the deposit of money in the smart contract. 
 
-## structure
+## Structure
  • contracts: which contains the file BattleShipGame.sol with the solidity
  code;
  • src: which contains the front-end structure with index.html, js folder with
  the app.js and others javascript code and the css folder with style.css
 
-## user manual
+## User manual
  To try out the project is needed Ganache, Truffle and Metamask as saw at laboratory lessons. So first of all is necessary to execute Ganache and start an appropriate workspace. 
  The second thing to do is compile the contract, to  do this in the P2P Project/migrations folder is necessary to run the command  ”truffle migrate”. 
  After this in the P2P Project folder to execute the code is possible to run

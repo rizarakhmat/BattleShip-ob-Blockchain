@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+  <title>Battleship Ethereum</title>
+
+  <!-- Bootstrap -->
+  <link href="css/style.css" rel="stylesheet">
+
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+  <!-- Title -->
+  <div class="container">
+    <div>
+      <div>
+        <h1 class="text-center">Battleship Ethereum Game</h1>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main menu with tree button: create, random join and specific join  -->
+  <div class="set-up" id="createOrJoin">
+    <!-- First button: start creation of a new game -->
+    <div>
+      <div id="createNewGameBtn" class="btn-start">
+        <h2>New game</h2>
+      </div>
+    </div>
+    <!-- Second button: join a random game -->
+    <div class="col" style="margin-top: 2%;">
+      <div id="joinRandomGameBtn" class="btn-start">
+        <h2>Random game</h2>
+      </div>
+    </div>
+    <!-- Third button: join a specific game -->
+    <div class="col" style="margin-top: 2%;">
+      <div id="joinGameBtn" class="btn-start">
+        <h2>Game with ID</h2>
+      </div>
+    </div>
+  </div>
+
+  <!-- Menu for insert the Id of the game to join -->
+  <div id="joinSpecificGame" class="form-start" hidden>
+    <div id="selectedGameIdDiv">
+      <h2>Insert the game ID or leave the input box clear to join a random game</h2>
+      <input class="form-type-number" type="number" id="selectedGameId" min="0" placeholder="Insert here the game Id">
+    </div>
+    <button id="joinGameIdBtn" type="button" class="btn">Join the game</button>
+    <button id="backToMenuBtn" type="button" class="btn">Main menu</button>
+  </div>
+
+  <!-- Menu for set the dimension of the board, the number of ships and the amount of Ethereum -->
+  <div class="form-start" id="setUpNewGame" hidden>
+
+    <div id="boardSizeDiv">
+      <h2>Board dimention:</h2>
+      <input required class="form-type-number" type="number" id="boardSize" value="4" min="2">
+    </div>
+    <div id="shipDiv">
+      <h2>Number of ships:</h2>
+      <input required class="form-type-number" type="number" id="shipNumber" value="3" min="1">
+    </div>
+    <div id="ethAmmountDiv">
+      <h2>ETH you want to bet:</h2>
+      <input required class="form-type-number" type="number" id="ethAmmount" value="2">
+    </div>
+
+    <div id="set-upButton">
+      <button id="createGameBtn" type="button" class="btn">Create a new game</button>
+      <button id="backToMenuBtn" type="button" class="btn">Main menu</button>
+    </div>
+  </div>
+
+  <!-- Menu for wait the opponent after create a game -->
+  <div id="waitingOpponent" class="form-start" hidden>
+    <div>
+      <div id="waitingOpponentConnection">
+        <h2 id="waitingOpponentTitle"> Welcome to Battleship Game Ethereum!</h2>
+        <h2>Loading..</h2>
+        <hr />
+      </div>
+    </div>
+  </div>
+
+  <!-- Menu for accept the Ethereum amount of a joined game -->
+  <div id="acceptAmount" hidden class="form-start">
+    <div id="acceptAmountText">
+      <h2> Loading... </h2>
+    </div>
+    <button id="acceptAmountBtn" type="button" class="btn">Accept the ETH</button>
+    <button id="refuseAmountBtn" type="button" class="btn">Quit this game</button>
+  </div>
+
+  <!-- BEGIN GAME SETTING -->
+
+  <div id="gamePhase" hidden>
+    <div class="form-start">
+      <h2 id="messageInfo">Placement phase</h2>
+    </div>
+    <div class="parent">
+      <div class="child"> <!-- Game board - positioning phase -->
+        <div class="form-board">
+          <h3>Your board</h3>
+        </div>
+        <div id="gameBoard" class="game-board"></div>
+      </div>
+    
+      <div class="child"> <!-- Game board - battle phase -->
+        <div class="form-board" hidden id="opponentBoard">
+          <h3>Opponent board</h3>
+        </div>
+        <div id="battleGameBoard" class="game-board"></div>
+      </div>
+    </div>
+    <div id="submitBtn" class="form-start">
+      <h2 id="submitInfo">Place the ships!</h2>
+    </div>
+    <div id="accusationBtn" class="form-start" hidden>
+      <h2 id="accusationInfo">Accuse the opponent to have left the game!</h2>
+    </div>
+    <div id="endBtn" class="form-start" hidden>
+      <h2 id="endInfo">Main menu</h2>
+    </div>
+  </div>
+
+  <!-- SCRIPT -->
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="js/web3.min.js"></script>
+  <script src="js/truffle-contract.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/app.js"></script>
+  <script type="module">
+    import web3Utils from 'https://cdn.jsdelivr.net/npm/web3-utils@3.0.0-rc.0/+esm';
+
+    window.addEventListener('DOMContentLoaded', () => {
+      window.web3Utils = web3Utils;
+
+    });
+  </script>
+</body>
+
+</html>
